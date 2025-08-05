@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "categories",
+  "info": {
+    "singularName": "category",
+    "pluralName": "categories",
+    "displayName": "Category",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "judul": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "seoUrl": {
+      "type": "uid",
+      "targetField": "judul",
+      "required": true
+    },
+    "dokumen": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::dokumen.dokumen",
+      "mappedBy": "category"
+    },
+    "posts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::post.post",
+      "mappedBy": "category"
+    },
+    "for": {
+      "type": "enumeration",
+      "enum": [
+        "post",
+        "dokumen"
+      ]
+    }
+  }
+}

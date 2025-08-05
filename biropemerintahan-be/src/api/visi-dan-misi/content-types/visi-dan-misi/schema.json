@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "visi_dan_misis",
+  "info": {
+    "singularName": "visi-dan-misi",
+    "pluralName": "visi-dan-misis",
+    "displayName": "Visi dan Misi",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "judul": {
+      "type": "string",
+      "required": true
+    },
+    "seoUrl": {
+      "type": "uid",
+      "targetField": "judul",
+      "required": true
+    },
+    "deskripsi": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

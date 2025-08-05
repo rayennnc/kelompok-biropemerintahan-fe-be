@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "profil_pejabats",
+  "info": {
+    "singularName": "profil-pejabat",
+    "pluralName": "profil-pejabats",
+    "displayName": "Profil Pejabat",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "judul": {
+      "type": "string",
+      "required": true
+    },
+    "seoUrl": {
+      "type": "uid",
+      "targetField": "judul",
+      "required": true
+    },
+    "deskripsi": {
+      "type": "richtext",
+      "required": true
+    },
+    "attachment": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}

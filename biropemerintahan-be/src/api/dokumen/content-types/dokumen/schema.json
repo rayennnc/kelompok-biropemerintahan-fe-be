@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "dokumens",
+  "info": {
+    "singularName": "dokumen",
+    "pluralName": "dokumens",
+    "displayName": "Dokumen",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "judul": {
+      "type": "string",
+      "required": true
+    },
+    "seoUrl": {
+      "type": "uid",
+      "targetField": "judul",
+      "required": true
+    },
+    "attachment": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "dokumen"
+    },
+    "konten": {
+      "type": "text"
+    }
+  }
+}

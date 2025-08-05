@@ -1,0 +1,39 @@
+{
+  "kind": "singleType",
+  "collectionName": "struktur_organisasis",
+  "info": {
+    "singularName": "struktur-organisasi",
+    "pluralName": "struktur-organisasis",
+    "displayName": "Struktur Organisasi",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "judul": {
+      "type": "string",
+      "required": true
+    },
+    "seoUrl": {
+      "type": "uid",
+      "targetField": "judul",
+      "required": true
+    },
+    "attachment": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "deskripsi": {
+      "type": "richtext",
+      "required": false
+    }
+  }
+}

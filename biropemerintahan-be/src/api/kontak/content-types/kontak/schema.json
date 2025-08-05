@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "kontaks",
+  "info": {
+    "singularName": "kontak",
+    "pluralName": "kontaks",
+    "displayName": "Kontak",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "alamat": {
+      "type": "string",
+      "required": true
+    },
+    "seoUrl": {
+      "type": "uid",
+      "targetField": "judul",
+      "required": true
+    },
+    "googleMapsUrl": {
+      "type": "text",
+      "required": true
+    },
+    "nomorKontak": {
+      "type": "biginteger",
+      "required": true
+    },
+    "judul": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

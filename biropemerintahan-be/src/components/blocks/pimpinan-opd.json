@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_blocks_pimpinan_opds",
+  "info": {
+    "displayName": "Pimpinan OPD"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "namalengkap": {
+      "type": "string",
+      "required": true
+    },
+    "pangkat": {
+      "type": "string"
+    },
+    "jabatan": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
