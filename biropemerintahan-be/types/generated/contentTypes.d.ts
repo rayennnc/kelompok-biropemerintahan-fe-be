@@ -443,6 +443,7 @@ export interface ApiDokumenDokumen extends Struct.CollectionTypeSchema {
 export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   collectionName: 'globals';
   info: {
+    description: '';
     displayName: 'Global';
     pluralName: 'globals';
     singularName: 'global';
@@ -457,8 +458,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.String & Schema.Attribute.Required;
-    footer: Schema.Attribute.Component<'elements.link', true> &
-      Schema.Attribute.Required;
+    Footer: Schema.Attribute.Component<'layout.footer', true>;
     Header: Schema.Attribute.Component<'elements.logo', true> &
       Schema.Attribute.Required;
     judul: Schema.Attribute.String & Schema.Attribute.Required;
@@ -480,6 +480,7 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
 export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
   collectionName: 'home_pages';
   info: {
+    description: '';
     displayName: 'Home Page';
     pluralName: 'home-pages';
     singularName: 'home-page';
@@ -489,7 +490,7 @@ export interface ApiHomePageHomePage extends Struct.SingleTypeSchema {
   };
   attributes: {
     blocks: Schema.Attribute.DynamicZone<
-      ['blocks.pimpinan-opd', 'blocks.hero-section']
+      ['blocks.hero-section', 'blocks.pimpinan-opd']
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

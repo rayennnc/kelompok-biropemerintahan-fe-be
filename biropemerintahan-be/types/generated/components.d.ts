@@ -3,6 +3,7 @@ import type { Schema, Struct } from '@strapi/strapi';
 export interface BlocksHeroSection extends Struct.ComponentSchema {
   collectionName: 'components_blocks_hero_sections';
   info: {
+    description: '';
     displayName: 'Hero Section';
   };
   attributes: {
@@ -52,15 +53,12 @@ export interface ElementsLogo extends Struct.ComponentSchema {
 export interface LayoutFooter extends Struct.ComponentSchema {
   collectionName: 'components_layout_footers';
   info: {
+    description: '';
     displayName: 'Footer';
   };
   attributes: {
-    address: Schema.Attribute.Text & Schema.Attribute.Required;
-    copyright: Schema.Attribute.String & Schema.Attribute.Required;
     links: Schema.Attribute.Component<'elements.link', true>;
     logo: Schema.Attribute.Component<'elements.logo', false> &
-      Schema.Attribute.Required;
-    socmed: Schema.Attribute.Component<'elements.link', true> &
       Schema.Attribute.Required;
   };
 }

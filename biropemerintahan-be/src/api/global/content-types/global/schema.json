@@ -4,7 +4,8 @@
   "info": {
     "singularName": "global",
     "pluralName": "globals",
-    "displayName": "Global"
+    "displayName": "Global",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -28,12 +29,6 @@
       "component": "elements.logo",
       "required": true
     },
-    "footer": {
-      "type": "component",
-      "repeatable": true,
-      "component": "elements.link",
-      "required": true
-    },
     "address": {
       "type": "text",
       "required": true
@@ -46,6 +41,11 @@
       "type": "component",
       "repeatable": true,
       "component": "elements.link"
+    },
+    "Footer": {
+      "type": "component",
+      "repeatable": true,
+      "component": "layout.footer"
     }
   }
 }
