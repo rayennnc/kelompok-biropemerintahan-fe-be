@@ -16,6 +16,20 @@
       "type": "component",
       "repeatable": true,
       "component": "elements.link"
+    },
+    "address": {
+      "type": "text",
+      "required": true
+    },
+    "copyright": {
+      "type": "string",
+      "required": true
+    },
+    "socmed": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.link",
+      "required": true
     }
   }
 }

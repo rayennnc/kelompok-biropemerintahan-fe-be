@@ -1,3 +1,8 @@
+// src/types.ts
+
+/* ======================================
+   Reusable Types
+====================================== */
 export interface LinkProps {
   id: number;
   text: string;
@@ -31,6 +36,14 @@ export interface HeaderData {
   navigation: LinkProps[];
 }
 
+export interface FooterData {
+  logo: LogoProps;
+  links: LinkProps[];
+  address: string;
+  copyright: string;
+  socmed: LinkProps[];
+}
+
 export interface GlobalData {
   id: number;
   documentId: string;
@@ -42,14 +55,21 @@ export interface GlobalData {
   publishedAt: string;
 }
 
-type ComponentType = "blocks.hero-section" | "blocks.pimpinan-opd";
+/* ======================================
+   Block Base Types
+====================================== */
+// Semua blok harus pakai ComponentType
+export type ComponentType =
+  | "blocks.hero-section"
+  | "blocks.pimpinan-opd"
+  | "blocks.kontak";
 
-interface Base<
+export interface Base<
   T extends ComponentType,
   D extends object = Record<string, unknown>
 > {
   id: number;
-  __component?: T;
+  __component: T;
   documentId?: string;
   createdAt?: string;
   updatedAt?: string;
@@ -57,16 +77,34 @@ interface Base<
   data?: D;
 }
 
-export type Block = HeroSectionProps | PimpinanOPDBlockProps;
-
+/* ======================================
+   Blok Spesifik
+====================================== */
 export interface HeroSectionProps extends Base<"blocks.hero-section"> {
-    image: ImageProps;
-    heading: string;
-    subheading: string;
+  image: ImageProps;
+  heading: string;
+  subheading: string;
 }
+
 export interface PimpinanOPDBlockProps extends Base<"blocks.pimpinan-opd"> {
-    image: ImageProps;
-    namalengkap: string;
-    pangkat: string;
-    jabatan: string;
+  image: ImageProps;
+  namalengkap: string;
+  pangkat: string;
+  jabatan: string;
 }
+
+export interface KontakProps extends Base<"blocks.kontak"> {
+  judul: string;
+  seoUrl: string;
+  googleMapsUrl: string;
+  alamat: string;
+  nomorKontak: string;
+}
+
+/* ======================================
+   Union Block
+====================================== */
+export type Block =
+  | HeroSectionProps
+  | PimpinanOPDBlockProps
+  | KontakProps;

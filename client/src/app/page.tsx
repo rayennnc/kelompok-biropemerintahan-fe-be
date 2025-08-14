@@ -1,3 +1,5 @@
+//src/app/page.tsx
+
 import { BlockRenderer } from "@/components/BlockRenderer";
 
 async function loader() {

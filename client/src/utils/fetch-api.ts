@@ -12,12 +12,17 @@ export async function fetchAPI(
     });
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const text = await response.text(); // baca isi error body
+      throw new Error(`HTTP error! status: ${response.status}, body: ${text}`);
     }
 
     return await response.json();
   } catch (error) {
-    console.error("Fetch API error:", error);
+    console.error("Fetch API error:", error, {
+      url,
+      options,
+      errorType: typeof error,
+    });
     throw error;
   }
 }
