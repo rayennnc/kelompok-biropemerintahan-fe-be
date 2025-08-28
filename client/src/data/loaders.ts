@@ -3,7 +3,7 @@ import qs from "qs";
 import { fetchAPI } from "@/utils/fetch-api";
 import { getStrapiURL } from "@/utils/get-strapi-url";
 
-const Base_URL = getStrapiURL();
+const baseURL = getStrapiURL();
 
 /* ========================
    HOMEPAGE
@@ -32,7 +32,7 @@ const homePageQuery = qs.stringify({
 
 export async function getHomePage() {
   const path = "/api/home";
-  const url = new URL(path, Base_URL);
+  const url = new URL(path, baseURL);
   url.search = homePageQuery;
   return await fetchAPI(url.href, { method: "GET" });
 }
@@ -66,7 +66,7 @@ const pageBySlugQuery = (slug: string) =>
 
 export async function getPageBySlug(slug: string) {
   const path = "/api/pages";
-  const url = new URL(path, Base_URL);
+  const url = new URL(path, baseURL);
   url.search = pageBySlugQuery(slug);
   return await fetchAPI(url.href, { method: "GET" });
 }
@@ -106,7 +106,7 @@ const globalSettingsQuery = qs.stringify(
 
 export async function getGlobalSettings() {
   const path = "/api/global";
-  const url = new URL(path, Base_URL);
+  const url = new URL(path, baseURL);
   url.search = globalSettingsQuery;
   return fetchAPI(url.href, { method: "GET" });
 }
@@ -123,7 +123,23 @@ const kontakQuery = qs.stringify(
 
 export async function getKontak() {
   const path = "/api/kontak"; // Single Type
-  const url = new URL(path, Base_URL);
+  const url = new URL(path, baseURL);
   url.search = kontakQuery;
+  return fetchAPI(url.href, { method: "GET" });
+}
+
+// Visi dan Misi (Single Type)
+
+const visiMisiQuery = qs.stringify(
+  {
+    fields: ["judul", "seoUrl", "deskripsi"],
+  },
+  { encodeValuesOnly: true }
+);
+
+export async function getVisiMisi() {
+  const path = "/api/visi-dan-misi";
+  const url = new URL(path, baseURL);
+  url.search = visiMisiQuery;
   return fetchAPI(url.href, { method: "GET" });
 }

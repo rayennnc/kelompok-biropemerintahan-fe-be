@@ -62,7 +62,8 @@ export interface GlobalData {
 export type ComponentType =
   | "blocks.hero-section"
   | "blocks.pimpinan-opd"
-  | "blocks.kontak";
+  | "blocks.kontak"
+  | "blocks.visi-dan-misi";
 
 export interface Base<
   T extends ComponentType,
@@ -101,10 +102,17 @@ export interface KontakProps extends Base<"blocks.kontak"> {
   nomorKontak: string;
 }
 
+export interface VisiMisiProps extends Base<"blocks.visi-dan-misi"> {
+  judul: string;
+  seoUrl: string;
+  deskripsi: string;
+}
+
 /* ======================================
    Union Block
 ====================================== */
 export type Block =
   | HeroSectionProps
   | PimpinanOPDBlockProps
-  | KontakProps;
+  | KontakProps
+  | VisiMisiProps;

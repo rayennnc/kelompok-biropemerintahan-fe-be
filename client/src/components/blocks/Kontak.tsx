@@ -1,3 +1,5 @@
+//src/components/blocks/kontak.tsx
+
 import { MapPin, Phone } from "lucide-react";
 import { KontakProps } from "@/types";
 

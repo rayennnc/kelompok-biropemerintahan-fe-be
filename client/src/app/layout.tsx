@@ -40,7 +40,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           navigation={headerData.navigation || []}
         />
         <main>{children}</main>
-        <Footer copyright={footerData?.copyright} />
+        <Footer {...footerData} />
       </body>
     </html>
   );
