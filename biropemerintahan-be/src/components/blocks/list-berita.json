@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_blocks_list_beritas",
+  "info": {
+    "displayName": "Berita List",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "judul": {
+      "type": "string"
+    },
+    "limit": {
+      "type": "integer"
+    }
+  }
+}

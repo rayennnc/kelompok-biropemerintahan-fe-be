@@ -1,8 +1,6 @@
 // src/types.ts
 
-/* ======================================
-   Reusable Types
-====================================== */
+// Reusable Types
 export interface LinkProps {
   id: number;
   text: string;
@@ -55,15 +53,13 @@ export interface GlobalData {
   publishedAt: string;
 }
 
-/* ======================================
-   Block Base Types
-====================================== */
-// Semua blok harus pakai ComponentType
+// Block Base Types
 export type ComponentType =
   | "blocks.hero-section"
   | "blocks.pimpinan-opd"
   | "blocks.kontak"
-  | "blocks.visi-dan-misi";
+  | "blocks.visi-dan-misi"
+  | "blocks.struktur-organisasi";
 
 export interface Base<
   T extends ComponentType,
@@ -78,9 +74,7 @@ export interface Base<
   data?: D;
 }
 
-/* ======================================
-   Blok Spesifik
-====================================== */
+// Specific Blocks
 export interface HeroSectionProps extends Base<"blocks.hero-section"> {
   image: ImageProps;
   heading: string;
@@ -108,11 +102,67 @@ export interface VisiMisiProps extends Base<"blocks.visi-dan-misi"> {
   deskripsi: string;
 }
 
-/* ======================================
-   Union Block
-====================================== */
+export interface StrukturOrganisasiProps extends Base<"blocks.struktur-organisasi"> {
+  judul: string;
+  seoUrl: string;
+  deskripsi: string;
+  attachment: ImageProps;
+}
+
+// Union Block
 export type Block =
   | HeroSectionProps
   | PimpinanOPDBlockProps
   | KontakProps
   | VisiMisiProps;
+
+// Posts & Category
+export interface CategoryProps {
+  id: number;
+  judul: string;
+  seoUrl: string;
+  description?: string;
+  for: "post" | "dokumen";
+  dokumen?: DokumenProps[];
+  posts?: PostProps[];
+  attachment?: ImageProps[];
+}
+
+export interface PostProps {
+  id: number;
+  seoUrl: string;
+  judul: string;
+  konten: string;
+  tanggal_postingan: string;
+  publishedAt: string;
+  thumbnail?: ImageProps | null;
+  category?: CategoryProps;
+}
+
+export interface DokumenProps {
+  id: number;
+  judul: string;
+  description: string;
+  seoUrl: string;
+  attachment: {
+    url: string;
+    name: string;
+    alternativeText?: string;
+  };
+  category?: CategoryProps;
+  konten?: string;
+}
+
+export interface StrapiResponse<T> {
+  data: {
+    id: number;
+    attributes: T;
+  }[];
+}
+
+export interface StrapiSingleResponse<T> {
+  data: {
+    id: number;
+    attributes: T;
+  };
+}

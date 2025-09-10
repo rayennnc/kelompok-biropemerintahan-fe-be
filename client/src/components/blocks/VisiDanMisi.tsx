@@ -1,5 +1,6 @@
 "use client";
 import ReactMarkdown from "react-markdown";
+import FadeUpOnScroll from "../FadeUpOnScroll";
 
 interface VisiDanMisiProps {
   judul: string;
@@ -22,35 +23,59 @@ function splitVisiMisi(markdown: string) {
 export function VisiDanMisi({ judul, deskripsi }: VisiDanMisiProps) {
   const { visi, misi } = splitVisiMisi(deskripsi || "");
 
+  // Pisahkan misi menjadi array poin (berdasarkan baris list markdown)
+  const misiList = misi
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0);
+
   return (
     <section className="bg-slate-50 py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
         {/* Judul Halaman */}
-        <h1 className="text-3xl md:text-4xl font-bold text-slate-800 text-center mb-2">
-          {judul}
-        </h1>
-        <div className="w-20 h-1 bg-blue-600 mx-auto mb-16" />
+        <FadeUpOnScroll threshold={0} delay={0.1}>
+          <h1 className="text-3xl md:text-4xl font-bold text-slate-800 text-center mb-2">
+            {judul}
+          </h1>
+          <div className="w-20 h-1 bg-blue-600 mx-auto mb-16" />
+        </FadeUpOnScroll>
 
         <div className="flex flex-col gap-8">
           {/* Card Visi */}
-          <div className="bg-white rounded-xl shadow-md border border-slate-200 p-8 transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg">
-            <div className="flex items-center gap-3 mb-4">
-              <h2 className="text-2xl font-semibold text-slate-900">Visi</h2>
+          <FadeUpOnScroll threshold={0} delay={0.2}>
+            <div className="bg-white rounded-xl shadow-md border border-slate-200 p-8 transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg">
+              <div className="flex items-center gap-3 mb-4">
+                <h2 className="text-2xl font-semibold text-slate-900">Visi</h2>
+              </div>
+              <div className="prose prose-slate max-w-none text-slate-700 text-justify">
+                <ReactMarkdown>{visi}</ReactMarkdown>
+              </div>
             </div>
-            <div className="prose prose-slate max-w-none text-slate-700 text-justify">
-              <ReactMarkdown>{visi}</ReactMarkdown>
-            </div>
-          </div>
+          </FadeUpOnScroll>
 
           {/* Card Misi */}
-          <div className="bg-white rounded-xl shadow-md border border-slate-200 p-8 transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg">
-            <div className="flex items-center gap-3 mb-4">
-              <h2 className="text-2xl font-semibold text-slate-900">Misi</h2>
+          <FadeUpOnScroll threshold={0} delay={0.3}>
+            <div className="bg-white rounded-xl shadow-md border border-slate-200 p-8 transition-transform duration-300 hover:scale-[1.02] hover:shadow-lg">
+              <div className="flex items-center gap-3 mb-4">
+                <h2 className="text-2xl font-semibold text-slate-900">Misi</h2>
+              </div>
+
+              {/* List Misi dengan animasi per poin */}
+              <ul className="list-decimal pl-5 space-y-2 text-slate-700 text-justify">
+                {misiList.map((poin, idx) => (
+                  <FadeUpOnScroll
+                    key={idx}
+                    threshold={0}
+                    delay={0.4 + idx * 0.1} // delay bertahap per poin
+                  >
+                    <li>
+                      <ReactMarkdown>{poin}</ReactMarkdown>
+                    </li>
+                  </FadeUpOnScroll>
+                ))}
+              </ul>
             </div>
-            <div className="prose prose-slate max-w-none text-slate-700 text-justify">
-              <ReactMarkdown>{misi}</ReactMarkdown>
-            </div>
-          </div>
+          </FadeUpOnScroll>
         </div>
       </div>
     </section>

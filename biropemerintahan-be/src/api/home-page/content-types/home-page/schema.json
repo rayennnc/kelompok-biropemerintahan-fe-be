@@ -23,7 +23,8 @@
       "type": "dynamiczone",
       "components": [
         "blocks.hero-section",
-        "blocks.pimpinan-opd"
+        "blocks.pimpinan-opd",
+        "blocks.list-berita"
       ]
     }
   }

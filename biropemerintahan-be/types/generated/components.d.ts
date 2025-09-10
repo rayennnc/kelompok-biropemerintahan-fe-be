@@ -13,6 +13,18 @@ export interface BlocksHeroSection extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksListBerita extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_list_beritas';
+  info: {
+    description: '';
+    displayName: 'Berita List';
+  };
+  attributes: {
+    judul: Schema.Attribute.String;
+    limit: Schema.Attribute.Integer;
+  };
+}
+
 export interface BlocksPimpinanOpd extends Struct.ComponentSchema {
   collectionName: 'components_blocks_pimpinan_opds';
   info: {
@@ -98,6 +110,7 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'blocks.hero-section': BlocksHeroSection;
+      'blocks.list-berita': BlocksListBerita;
       'blocks.pimpinan-opd': BlocksPimpinanOpd;
       'elements.ctabutton': ElementsCtabutton;
       'elements.link': ElementsLink;
