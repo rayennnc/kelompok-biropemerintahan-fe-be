@@ -41,6 +41,13 @@
         "post",
         "dokumen"
       ]
+    },
+    "attachment": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

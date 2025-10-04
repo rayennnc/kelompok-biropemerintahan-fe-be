@@ -39,17 +39,6 @@
       "targetField": "judul",
       "required": true
     },
-    "attachment": {
-      "type": "media",
-      "multiple": true,
-      "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
     "category": {
       "type": "relation",
       "relation": "manyToOne",
